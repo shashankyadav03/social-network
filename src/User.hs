@@ -19,9 +19,12 @@ createUser id name = User id name
 randomUsername :: IO String
 randomUsername = do
     -- Generate a random sequence of characters or choose from a list of names
+    -- This is a placeholder for simplicity; you can replace it with more complex logic
+    let names = ["John", "Jane", "Alice", "Bob", "Eve", "Oscar", "Charlie"]
+    index <- randomRIO (0, length names - 1)
     -- Example: Generate a username like "User1234"
     num <- randomRIO (1, 10000 :: Int) -- Generate a random user ID
-    return $ "User" ++ show num
+    return $ names !! index ++ show num
 
 -- Function to create a random user
 createRandomUser :: IO User
