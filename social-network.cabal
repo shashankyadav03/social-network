@@ -6,7 +6,7 @@ cabal-version: 2.2
 
 name:           social-network
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/githubuser/social-network#readme>
+description:    Social Media Demonstration
 homepage:       https://github.com/githubuser/social-network#readme
 bug-reports:    https://github.com/githubuser/social-network/issues
 author:         Author name here
@@ -26,7 +26,6 @@ source-repository head
 library
   exposed-modules:
       ConcurrentUtils
-      InteractionHistory
       Lib
       Message
       User
@@ -46,7 +45,6 @@ library
     , servant-client
     , servant-server
     , servant-swagger
-    , sqlite-simple
     , swagger2
     , text
   default-language: Haskell2010
@@ -70,7 +68,6 @@ executable social-network-exe
     , servant-server
     , servant-swagger
     , social-network
-    , sqlite-simple
     , swagger2
     , text
   default-language: Haskell2010
@@ -98,7 +95,6 @@ test-suite social-network-test
     , servant-server
     , servant-swagger
     , social-network
-    , sqlite-simple
     , swagger2
     , text
   default-language: Haskell2010
