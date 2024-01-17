@@ -21,9 +21,7 @@ randomMessageContent = do
     -- This is a placeholder for simplicity; you can replace it with more complex logic
     let messages = ["Hello", "How are you?", "Good day", "Hi there!", "Greetings"]
     index <- randomRIO (0, length messages - 1)
-    let message = messages !! index
-    -- Print the message for logging or debugging
-    putStrLn $ "Generated message: " ++ message
+    
     return $ messages !! index
 
 -- Function to create a random message between two users

@@ -6,7 +6,7 @@ import System.Random (randomRIO)
 import Database.SQLite.Simple (Connection, close)
 
 import User (createRandomUser, getUsername, userId, User, username)
-import Message (createRandomMessage)
+import Message (createRandomMessage, Message, content, receiver, sender)
 import ConcurrentUtils (randomDelayAction)
 import InteractionHistory (connectDb, initDb, logInteraction, queryUserHistory, queryFullHistory)
 
@@ -19,6 +19,12 @@ userThread conn users currentUser = forever $ do
 
     -- Create a random message
     message <- createRandomMessage currentUser recipient
+
+    let msgContent = content message
+    let msgSender = sender message
+    let msgReceiver = receiver message
+
+    print $ "Message from " ++ getUsername msgSender ++ " to " ++ getUsername msgReceiver ++ ": " ++ msgContent
 
     -- Log the interaction in the database
     logInteraction conn message
