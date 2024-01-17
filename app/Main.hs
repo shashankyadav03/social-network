@@ -1,12 +1,12 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 import Control.Concurrent
-import Control.Monad (forever, forM_, replicateM)
+import Control.Monad (forever,forM_,replicateM)
 import System.Random (randomRIO)
 import Database.SQLite.Simple (Connection, close)
 
 import User (createRandomUser, getUsername, userId, User, username)
-import Message (createRandomMessage, Message, content, receiver, sender)
+import Message (createRandomMessage, content, Message, receiver, sender)
 import ConcurrentUtils (randomDelayAction)
 import InteractionHistory (connectDb, initDb, logInteraction, queryUserHistory, queryFullHistory)
 
@@ -34,13 +34,17 @@ userThread conn users currentUser = forever $ do
 
 main :: IO ()
 main = do
-    putStrLn "Inside main..."
+    putStrLn "Social Network Simulation"
     -- Connect to the SQLite database
     conn <- connectDb
 
 
     -- -- Initialize the database
     initDb conn
+
+    putStrLn "Press any key to terminate..."
+    -- Wait for 2 sec
+    threadDelay (2 * 1000000)
 
     -- Create 10 random users
     users <- replicateM 10 createRandomUser
@@ -49,7 +53,7 @@ main = do
     mapM_ (forkIO . userThread conn users) users
 
     -- Wait for a certain condition or user input to terminate
-    putStrLn "Press any key to terminate..."
+
     _ <- getLine
 
     -- Query and print the interaction history
@@ -57,8 +61,11 @@ main = do
     putStrLn "Final Interaction History:"
     mapM_ print history
 
+    putStrLn "Simulation completed"
     -- Close the database connection
     close conn
+
+    
 
 -- module Main where
 
