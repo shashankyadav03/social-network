@@ -27,8 +27,8 @@ library
   exposed-modules:
       ConcurrentUtils
       InteractionHistory
-      Lib
       Message
+      Types
       User
   other-modules:
       Paths_social_network
@@ -77,9 +77,8 @@ executable social-network-exe
 
 test-suite social-network-test
   type: exitcode-stdio-1.0
-  main-is: Spec.hs
+  main-is: InteractionHistoryTest.hs
   other-modules:
-      InteractionHistoryTest
       MessageTest
       UserTest
       Paths_social_network

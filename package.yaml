@@ -61,7 +61,7 @@ executables:
 
 tests:
   social-network-test:
-    main:                Spec.hs
+    main:                InteractionHistoryTest.hs
     source-dirs:         test
     ghc-options:
     - -threaded
