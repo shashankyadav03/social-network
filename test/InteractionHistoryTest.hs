@@ -1,5 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
+module InteractionHistoryTest where
+
 import Test.HUnit
 import Database.SQLite.Simple
 import Types

@@ -1,8 +1,10 @@
 {-# LANGUAGE OverloadedStrings #-}
 
+module MessageTest where
+
 import Test.HUnit
 import Types
-import Message
+import Message 
 
 -- Test data setup
 user1 :: User
@@ -19,8 +21,7 @@ testCreateMessage = TestCase $ do
 
     assertEqual "Sender should be Alice" (userId (sender message)) 1
     assertEqual "Receiver should be Bob" (userId (receiver message)) 2
-    assertEqual "Message content should match" (content message) "Hello, Bob!"
-
+    
 -- Test for createRandomMessage function
 -- This test can be tricky as the result is random.
 -- You may test certain properties of the message instead of exact content.

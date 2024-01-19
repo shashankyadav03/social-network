@@ -38,7 +38,8 @@ library
       src
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
-      aeson
+      HUnit
+    , aeson
     , base >=4.7 && <5
     , containers
     , random
@@ -61,7 +62,8 @@ executable social-network-exe
       app
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      aeson
+      HUnit
+    , aeson
     , base >=4.7 && <5
     , containers
     , random
@@ -77,8 +79,9 @@ executable social-network-exe
 
 test-suite social-network-test
   type: exitcode-stdio-1.0
-  main-is: InteractionHistoryTest.hs
+  main-is: Spec.hs
   other-modules:
+      InteractionHistoryTest
       MessageTest
       UserTest
       Paths_social_network
@@ -88,7 +91,8 @@ test-suite social-network-test
       test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      aeson
+      HUnit
+    , aeson
     , base >=4.7 && <5
     , containers
     , random

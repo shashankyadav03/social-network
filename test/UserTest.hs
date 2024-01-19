@@ -1,5 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
+module UserTest where
+
 import Test.HUnit
 import Types
 import User
