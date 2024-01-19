@@ -6,12 +6,12 @@ cabal-version: 2.2
 
 name:           social-network
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/githubuser/social-network#readme>
-homepage:       https://github.com/githubuser/social-network#readme
-bug-reports:    https://github.com/githubuser/social-network/issues
-author:         Author name here
-maintainer:     example@example.com
-copyright:      2024 Author name here
+description:    Please see the README on GitHub at <https://github.com/shashankyadav03/social-network#readme>
+homepage:       https://github.com/shashankyadav03/social-network#readme
+bug-reports:    https://github.com/shashankyadav03/social-network/issues
+author:         Shashank Yadav
+maintainer:     s.yadav@se23.qmul.ac.uk
+copyright:      2024 Shashank Yadav
 license:        BSD-3-Clause
 license-file:   LICENSE
 build-type:     Simple
@@ -21,14 +21,14 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/githubuser/social-network
+  location: https://github.com/shashankyadav03/social-network
 
 library
   exposed-modules:
       ConcurrentUtils
       InteractionHistory
-      Lib
       Message
+      Types
       User
   other-modules:
       Paths_social_network
@@ -38,7 +38,8 @@ library
       src
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
-      aeson
+      HUnit
+    , aeson
     , base >=4.7 && <5
     , containers
     , random
@@ -61,7 +62,8 @@ executable social-network-exe
       app
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      aeson
+      HUnit
+    , aeson
     , base >=4.7 && <5
     , containers
     , random
@@ -89,7 +91,8 @@ test-suite social-network-test
       test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      aeson
+      HUnit
+    , aeson
     , base >=4.7 && <5
     , containers
     , random
