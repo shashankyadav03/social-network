@@ -28,6 +28,3 @@ stack test
 
 ## License
 This project is not open-source and is under the [QMUL License](LICENSE).
-
-## Acknowledgments
-- Thanks to all contributors who have helped to build and improve this simulation.
