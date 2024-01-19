@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-pragma">{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}</span><span>
+</span><span id="line-2"></span><span class="hs-pragma">{-# HLINT ignore &quot;Use &lt;$&gt;&quot; #-}</span><span>
+</span><span id="line-3"></span><span class="hs-comment">-- | Module for handling user-related functionalities in the Haskell-Based Social Network Simulation.</span><span>
+</span><span id="line-4"></span><span class="hs-comment">-- This module provides functionalities for creating and managing users,</span><span>
+</span><span id="line-5"></span><span class="hs-comment">-- including generating random users for the simulation.</span><span>
+</span><span id="line-6"></span><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">User</span><span>
+</span><span id="line-7"></span><span>    </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="User.html#createUser"><span class="hs-identifier">createUser</span></a></span><span>
+</span><span id="line-8"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="User.html#randomUsername"><span class="hs-identifier">randomUsername</span></a></span><span>
+</span><span id="line-9"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="User.html#createRandomUser"><span class="hs-identifier">createRandomUser</span></a></span><span>
+</span><span id="line-10"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="User.html#getUsername"><span class="hs-identifier">getUsername</span></a></span><span>
+</span><span id="line-11"></span><span>    </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-12"></span><span>
+</span><span id="line-13"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">System.Random</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">randomRIO</span></span><span class="hs-special">)</span><span>
+</span><span id="line-14"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Types.html"><span class="hs-identifier">Types</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Types.html#User"><span class="hs-identifier">User</span></a></span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span>  </span><span class="hs-comment">-- Import User from Types</span><span>
+</span><span id="line-15"></span><span>
+</span><span id="line-16"></span><span class="hs-comment">-- | Creates a new user with a specified ID and username.</span><span>
+</span><span id="line-17"></span><span class="hs-comment">--</span><span>
+</span><span id="line-18"></span><span class="hs-comment">-- @param id The unique identifier for the new user.</span><span>
+</span><span id="line-19"></span><span class="hs-comment">-- @param name The name for the new user.</span><span>
+</span><span id="line-20"></span><span class="hs-comment">-- @return A new User object.</span><span>
+</span><span id="line-21"></span><span class="annot"><a href="User.html#createUser"><span class="hs-identifier hs-type">createUser</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Types.html#User"><span class="hs-identifier hs-type">User</span></a></span><span>
+</span><span id="line-22"></span><span id="createUser"><span class="annot"><span class="annottext">createUser :: Int -&gt; String -&gt; User
+</span><a href="User.html#createUser"><span class="hs-identifier hs-var hs-var">createUser</span></a></span></span><span> </span><span id="local-6989586621679092163"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679092163"><span class="hs-identifier hs-var">id</span></a></span></span><span> </span><span id="local-6989586621679092164"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679092164"><span class="hs-identifier hs-var">name</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; User
+</span><a href="Types.html#User"><span class="hs-identifier hs-var">User</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679092163"><span class="hs-identifier hs-var">id</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679092164"><span class="hs-identifier hs-var">name</span></a></span><span>
+</span><span id="line-23"></span><span>
+</span><span id="line-24"></span><span class="hs-comment">-- | Generates a random username from a predefined list of names.</span><span>
+</span><span id="line-25"></span><span class="hs-comment">--</span><span>
+</span><span id="line-26"></span><span class="hs-comment">-- @return A randomly selected username.</span><span>
+</span><span id="line-27"></span><span class="annot"><a href="User.html#randomUsername"><span class="hs-identifier hs-type">randomUsername</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-28"></span><span id="randomUsername"><span class="annot"><span class="annottext">randomUsername :: IO String
+</span><a href="User.html#randomUsername"><span class="hs-identifier hs-var hs-var">randomUsername</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-29"></span><span>    </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621679092166"><span class="annot"><span class="annottext">names :: [String]
+</span><a href="#local-6989586621679092166"><span class="hs-identifier hs-var hs-var">names</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;John&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Jane&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Alice&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Bob&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Eve&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Oscar&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Charlie&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Carol&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Dave&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Erin&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Frank&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Grace&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Heidi&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Ivan&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Judy&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Mallory&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Peggy&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Sybil&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Trudy&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Victor&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Walter&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Wendy&quot;</span></span><span class="hs-special">]</span><span>
+</span><span id="line-30"></span><span>    </span><span id="local-6989586621679092167"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679092167"><span class="hs-identifier hs-var">index</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Int, Int) -&gt; IO Int
+forall a (m :: * -&gt; *). (Random a, MonadIO m) =&gt; (a, a) -&gt; m a
+</span><span class="hs-identifier hs-var">randomRIO</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">0</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">[String] -&gt; Int
+forall a. [a] -&gt; Int
+forall (t :: * -&gt; *) a. Foldable t =&gt; t a -&gt; Int
+</span><span class="hs-identifier hs-var">length</span></span><span> </span><span class="annot"><span class="annottext">[String]
+</span><a href="#local-6989586621679092166"><span class="hs-identifier hs-var">names</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Int
+forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-glyph hs-var">-</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span>
+</span><span id="line-31"></span><span>    </span><span id="local-6989586621679092169"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679092169"><span class="hs-identifier hs-var">num</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Int, Int) -&gt; IO Int
+forall a (m :: * -&gt; *). (Random a, MonadIO m) =&gt; (a, a) -&gt; m a
+</span><span class="hs-identifier hs-var">randomRIO</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">10000</span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span class="hs-special">)</span><span>
+</span><span id="line-32"></span><span>    </span><span class="annot"><span class="annottext">String -&gt; IO String
+forall a. a -&gt; IO a
+forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(String -&gt; IO String) -&gt; String -&gt; IO String
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">[String]
+</span><a href="#local-6989586621679092166"><span class="hs-identifier hs-var">names</span></a></span><span> </span><span class="annot"><span class="annottext">[String] -&gt; Int -&gt; String
+forall a. HasCallStack =&gt; [a] -&gt; Int -&gt; a
+</span><span class="hs-operator hs-var">!!</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679092167"><span class="hs-identifier hs-var">index</span></a></span><span> </span><span class="annot"><span class="annottext">String -&gt; String -&gt; String
+forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">Int -&gt; String
+forall a. Show a =&gt; a -&gt; String
+</span><span class="hs-identifier hs-var">show</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679092169"><span class="hs-identifier hs-var">num</span></a></span><span>
+</span><span id="line-33"></span><span>
+</span><span id="line-34"></span><span class="hs-comment">-- | Creates a random user with a unique ID and a randomly generated username.</span><span>
+</span><span id="line-35"></span><span class="hs-comment">--</span><span>
+</span><span id="line-36"></span><span class="hs-comment">-- @return A randomly generated User in IO context.</span><span>
+</span><span id="line-37"></span><span class="annot"><a href="User.html#createRandomUser"><span class="hs-identifier hs-type">createRandomUser</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="Types.html#User"><span class="hs-identifier hs-type">User</span></a></span><span>
+</span><span id="line-38"></span><span id="createRandomUser"><span class="annot"><span class="annottext">createRandomUser :: IO User
+</span><a href="User.html#createRandomUser"><span class="hs-identifier hs-var hs-var">createRandomUser</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-39"></span><span>    </span><span id="local-6989586621679092172"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679092172"><span class="hs-identifier hs-var">randomId</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Int, Int) -&gt; IO Int
+forall a (m :: * -&gt; *). (Random a, MonadIO m) =&gt; (a, a) -&gt; m a
+</span><span class="hs-identifier hs-var">randomRIO</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">10000</span></span><span class="hs-special">)</span><span> </span><span class="hs-comment">-- Generate a random user ID</span><span>
+</span><span id="line-40"></span><span>    </span><span id="local-6989586621679092173"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679092173"><span class="hs-identifier hs-var">name</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">IO String
+</span><a href="User.html#randomUsername"><span class="hs-identifier hs-var">randomUsername</span></a></span><span>
+</span><span id="line-41"></span><span>    </span><span class="annot"><span class="annottext">User -&gt; IO User
+forall a. a -&gt; IO a
+forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(User -&gt; IO User) -&gt; User -&gt; IO User
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; User
+</span><a href="User.html#createUser"><span class="hs-identifier hs-var">createUser</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679092172"><span class="hs-identifier hs-var">randomId</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679092173"><span class="hs-identifier hs-var">name</span></a></span><span>
+</span><span id="line-42"></span><span>
+</span><span id="line-43"></span><span class="hs-comment">-- | Retrieves the username of a given User.</span><span>
+</span><span id="line-44"></span><span class="hs-comment">--</span><span>
+</span><span id="line-45"></span><span class="hs-comment">-- @param user The User object.</span><span>
+</span><span id="line-46"></span><span class="hs-comment">-- @return The username of the User.</span><span>
+</span><span id="line-47"></span><span class="annot"><a href="User.html#getUsername"><span class="hs-identifier hs-type">getUsername</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Types.html#User"><span class="hs-identifier hs-type">User</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-48"></span><span id="getUsername"><span class="annot"><span class="annottext">getUsername :: User -&gt; String
+</span><a href="User.html#getUsername"><span class="hs-identifier hs-var hs-var">getUsername</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">User -&gt; String
+</span><a href="Types.html#username"><span class="hs-identifier hs-var">username</span></a></span><span>
+</span><span id="line-49"></span><span>
+</span><span id="line-50"></span><span class="hs-comment">-- {-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}</span><span>
+</span><span id="line-51"></span><span class="hs-comment">-- {-# HLINT ignore &quot;Use &lt;$&gt;&quot; #-}</span><span>
+</span><span id="line-52"></span><span class="hs-comment">-- module User where</span><span>
+</span><span id="line-53"></span><span>
+</span><span id="line-54"></span><span class="hs-comment">-- import System.Random (randomRIO)</span><span>
+</span><span id="line-55"></span><span class="hs-comment">-- import Control.Monad (replicateM)</span><span>
+</span><span id="line-56"></span><span>
+</span><span id="line-57"></span><span class="hs-comment">-- -- Define the User data type</span><span>
+</span><span id="line-58"></span><span class="hs-comment">-- data User = User {</span><span>
+</span><span id="line-59"></span><span class="hs-comment">--     userId :: Int,</span><span>
+</span><span id="line-60"></span><span class="hs-comment">--     username :: String</span><span>
+</span><span id="line-61"></span><span class="hs-comment">-- } deriving (Eq, Show)</span><span>
+</span><span id="line-62"></span><span>
+</span><span id="line-63"></span><span class="hs-comment">-- -- Function to create a new user with a unique ID and a username</span><span>
+</span><span id="line-64"></span><span class="hs-comment">-- createUser :: Int -&gt; String -&gt; User</span><span>
+</span><span id="line-65"></span><span class="hs-comment">-- createUser id name = User id name</span><span>
+</span><span id="line-66"></span><span>
+</span><span id="line-67"></span><span class="hs-comment">-- -- Function to generate a random username</span><span>
+</span><span id="line-68"></span><span class="hs-comment">-- randomUsername :: IO String</span><span>
+</span><span id="line-69"></span><span class="hs-comment">-- randomUsername = do</span><span>
+</span><span id="line-70"></span><span class="hs-comment">--     -- Generate a random sequence of characters or choose from a list of names</span><span>
+</span><span id="line-71"></span><span class="hs-comment">--     -- This is a placeholder for simplicity; you can replace it with more complex logic</span><span>
+</span><span id="line-72"></span><span class="hs-comment">--     let names = [&quot;John&quot;, &quot;Jane&quot;, &quot;Alice&quot;, &quot;Bob&quot;, &quot;Eve&quot;, &quot;Oscar&quot;, &quot;Charlie&quot;, &quot;Carol&quot;, &quot;Dave&quot;, &quot;Erin&quot;, &quot;Frank&quot;, &quot;Grace&quot;, &quot;Heidi&quot;, &quot;Ivan&quot;, &quot;Judy&quot;, &quot;Mallory&quot;, &quot;Peggy&quot;, &quot;Sybil&quot;, &quot;Trudy&quot;, &quot;Victor&quot;, &quot;Walter&quot;, &quot;Wendy&quot;]</span><span>
+</span><span id="line-73"></span><span class="hs-comment">--     index &lt;- randomRIO (0, length names - 1)</span><span>
+</span><span id="line-74"></span><span class="hs-comment">--     -- Example: Generate a username like &quot;User1234&quot;</span><span>
+</span><span id="line-75"></span><span class="hs-comment">--     num &lt;- randomRIO (1, 10000 :: Int) -- Generate a random user ID</span><span>
+</span><span id="line-76"></span><span class="hs-comment">--     return $ names !! index </span><span>
+</span><span id="line-77"></span><span>
+</span><span id="line-78"></span><span class="hs-comment">-- -- Function to create a random user</span><span>
+</span><span id="line-79"></span><span class="hs-comment">-- createRandomUser :: IO User</span><span>
+</span><span id="line-80"></span><span class="hs-comment">-- createRandomUser = do</span><span>
+</span><span id="line-81"></span><span class="hs-comment">--     randomId &lt;- randomRIO (1, 10000) -- Generate a random user ID</span><span>
+</span><span id="line-82"></span><span class="hs-comment">--     name &lt;- randomUsername</span><span>
+</span><span id="line-83"></span><span class="hs-comment">--     return $ createUser randomId name</span><span>
+</span><span id="line-84"></span><span>
+</span><span id="line-85"></span><span class="hs-comment">-- -- Example function to get a username from a User</span><span>
+</span><span id="line-86"></span><span class="hs-comment">-- getUsername :: User -&gt; String</span><span>
+</span><span id="line-87"></span><span class="hs-comment">-- getUsername = username</span><span>
+</span><span id="line-88"></span></pre></body></html>

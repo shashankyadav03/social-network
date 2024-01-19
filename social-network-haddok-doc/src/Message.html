@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-comment">-- | Module for handling messages in the Haskell-Based Social Network Simulation.</span><span>
+</span><span id="line-2"></span><span class="hs-comment">-- This module defines the Message data type and provides functionalities</span><span>
+</span><span id="line-3"></span><span class="hs-comment">-- for creating and managing messages.</span><span>
+</span><span id="line-4"></span><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Message</span><span>
+</span><span id="line-5"></span><span>    </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Types.html#Message"><span class="hs-identifier">Message</span></a></span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-6"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Message.html#createMessage"><span class="hs-identifier">createMessage</span></a></span><span>
+</span><span id="line-7"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Message.html#randomMessageContent"><span class="hs-identifier">randomMessageContent</span></a></span><span>
+</span><span id="line-8"></span><span>    </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Message.html#createRandomMessage"><span class="hs-identifier">createRandomMessage</span></a></span><span>
+</span><span id="line-9"></span><span>    </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-10"></span><span>
+</span><span id="line-11"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Types.html"><span class="hs-identifier">Types</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Types.html#User"><span class="hs-identifier">User</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><a href="Types.html#Message"><span class="hs-identifier">Message</span></a></span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span>  </span><span class="hs-comment">-- Import User and Message from Types</span><span>
+</span><span id="line-12"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">System.Random</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">randomRIO</span></span><span class="hs-special">)</span><span>
+</span><span id="line-13"></span><span>
+</span><span id="line-14"></span><span class="hs-comment">-- | Creates a new message with specified sender, receiver, and content.</span><span>
+</span><span id="line-15"></span><span class="hs-comment">-- </span><span>
+</span><span id="line-16"></span><span class="hs-comment">-- @param from The sender of the message.</span><span>
+</span><span id="line-17"></span><span class="hs-comment">-- @param to The receiver of the message.</span><span>
+</span><span id="line-18"></span><span class="hs-comment">-- @param msgContent The content of the message.</span><span>
+</span><span id="line-19"></span><span class="hs-comment">-- @return The constructed Message.</span><span>
+</span><span id="line-20"></span><span class="annot"><a href="Message.html#createMessage"><span class="hs-identifier hs-type">createMessage</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Types.html#User"><span class="hs-identifier hs-type">User</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Types.html#User"><span class="hs-identifier hs-type">User</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Types.html#Message"><span class="hs-identifier hs-type">Message</span></a></span><span>
+</span><span id="line-21"></span><span id="createMessage"><span class="annot"><span class="annottext">createMessage :: User -&gt; User -&gt; String -&gt; Message
+</span><a href="Message.html#createMessage"><span class="hs-identifier hs-var hs-var">createMessage</span></a></span></span><span> </span><span id="local-6989586621679091991"><span class="annot"><span class="annottext">User
+</span><a href="#local-6989586621679091991"><span class="hs-identifier hs-var">from</span></a></span></span><span> </span><span id="local-6989586621679091992"><span class="annot"><span class="annottext">User
+</span><a href="#local-6989586621679091992"><span class="hs-identifier hs-var">to</span></a></span></span><span> </span><span id="local-6989586621679091993"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679091993"><span class="hs-identifier hs-var">msgContent</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">User -&gt; User -&gt; String -&gt; Message
+</span><a href="Types.html#Message"><span class="hs-identifier hs-var">Message</span></a></span><span> </span><span class="annot"><span class="annottext">User
+</span><a href="#local-6989586621679091991"><span class="hs-identifier hs-var">from</span></a></span><span> </span><span class="annot"><span class="annottext">User
+</span><a href="#local-6989586621679091992"><span class="hs-identifier hs-var">to</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679091993"><span class="hs-identifier hs-var">msgContent</span></a></span><span>
+</span><span id="line-22"></span><span>
+</span><span id="line-23"></span><span class="hs-comment">-- | Generates a random message content from a predefined list of phrases.</span><span>
+</span><span id="line-24"></span><span class="hs-comment">--</span><span>
+</span><span id="line-25"></span><span class="hs-comment">-- @return A randomly selected message content.</span><span>
+</span><span id="line-26"></span><span class="annot"><a href="Message.html#randomMessageContent"><span class="hs-identifier hs-type">randomMessageContent</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-27"></span><span id="randomMessageContent"><span class="annot"><span class="annottext">randomMessageContent :: IO String
+</span><a href="Message.html#randomMessageContent"><span class="hs-identifier hs-var hs-var">randomMessageContent</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-28"></span><span>    </span><span class="hs-keyword">let</span><span> </span><span id="local-6989586621679091995"><span class="annot"><span class="annottext">messages :: [String]
+</span><a href="#local-6989586621679091995"><span class="hs-identifier hs-var hs-var">messages</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Hello, how's your day going?&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Hi! Long time no see.&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;How are you feeling today?&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Good morning, hope you slept well!&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Good evening, did you have a good day?&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Wishing you a peaceful night.&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Enjoying this sunny afternoon!&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;What a lovely day, isn't it?&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Take care, talk to you soon.&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Bye! Catch up later?&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;See you tomorrow at our regular spot.&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Can't wait to see you this weekend.&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;How about a coffee catch-up soon?&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Do you want to join me for a movie tonight?&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Let's have a picnic in the park this Saturday.&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Fancy a trip to the beach this Sunday?&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Shall we go shopping at the mall this evening?&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;I found a new restaurant downtown. Let's try it out!&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Are you up for a workout at the gym later?&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;There's a cool party happening this Friday. Interested?&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Let's go clubbing this weekend!&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;How about a drink at the bar after work?&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;I have tickets for a concert next week. Wanna come?&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;I'm planning to go to the theater this month. Join me?&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;There's an interesting exhibition at the museum. Let's visit!&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Have you ever been to the zoo here? It's quite nice.&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Let's check out the new aquarium in town.&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Are you interested in going to the game next week?&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Thank you for being there for me.&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;I've been feeling really upbeat lately!&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Honestly, I'm feeling a bit down. Could use some cheering up.&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;I'm quite tired today, had a long week.&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;I could really go for a nap right now.&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;I'm starving, let's grab some food!&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Feeling dehydrated after that workout!&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Do you ever get that feeling of just wanting to do nothing?&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Haven't been feeling the best, might take a day off.&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;I've got so much work to do, feeling a bit overwhelmed.&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;I'm totally free this weekend, let's plan something fun!&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Just here chilling at home. What about you?&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;I'm really looking forward to our trip next month.&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Got a bit nervous about the presentation tomorrow.&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;I've been anxious about the results, hope it goes well.&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Trying to stay calm before the big day.&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;Let's get cozy and watch a movie, it's freezing outside!&quot;</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;It's so warm today, perfect for a swim.&quot;</span></span><span class="hs-special">]</span><span>
+</span><span id="line-29"></span><span>    </span><span id="local-6989586621679091996"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679091996"><span class="hs-identifier hs-var">index</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(Int, Int) -&gt; IO Int
+forall a (m :: * -&gt; *). (Random a, MonadIO m) =&gt; (a, a) -&gt; m a
+</span><span class="hs-identifier hs-var">randomRIO</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">0</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">[String] -&gt; Int
+forall a. [a] -&gt; Int
+forall (t :: * -&gt; *) a. Foldable t =&gt; t a -&gt; Int
+</span><span class="hs-identifier hs-var">length</span></span><span> </span><span class="annot"><span class="annottext">[String]
+</span><a href="#local-6989586621679091995"><span class="hs-identifier hs-var">messages</span></a></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; Int
+forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-glyph hs-var">-</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span>
+</span><span id="line-30"></span><span>    </span><span class="annot"><span class="annottext">String -&gt; IO String
+forall a. a -&gt; IO a
+forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(String -&gt; IO String) -&gt; String -&gt; IO String
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">[String]
+</span><a href="#local-6989586621679091995"><span class="hs-identifier hs-var">messages</span></a></span><span> </span><span class="annot"><span class="annottext">[String] -&gt; Int -&gt; String
+forall a. HasCallStack =&gt; [a] -&gt; Int -&gt; a
+</span><span class="hs-operator hs-var">!!</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679091996"><span class="hs-identifier hs-var">index</span></a></span><span>
+</span><span id="line-31"></span><span>
+</span><span id="line-32"></span><span class="hs-comment">-- | Creates a random message between two users.</span><span>
+</span><span id="line-33"></span><span class="hs-comment">--</span><span>
+</span><span id="line-34"></span><span class="hs-comment">-- This function selects a random content and constructs a message from</span><span>
+</span><span id="line-35"></span><span class="hs-comment">-- one user to another.</span><span>
+</span><span id="line-36"></span><span class="hs-comment">-- </span><span>
+</span><span id="line-37"></span><span class="hs-comment">-- @param from The sender of the message.</span><span>
+</span><span id="line-38"></span><span class="hs-comment">-- @param to The receiver of the message.</span><span>
+</span><span id="line-39"></span><span class="hs-comment">-- @return A randomly generated Message in IO context.</span><span>
+</span><span id="line-40"></span><span class="annot"><a href="Message.html#createRandomMessage"><span class="hs-identifier hs-type">createRandomMessage</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Types.html#User"><span class="hs-identifier hs-type">User</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="Types.html#User"><span class="hs-identifier hs-type">User</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="Types.html#Message"><span class="hs-identifier hs-type">Message</span></a></span><span>
+</span><span id="line-41"></span><span id="createRandomMessage"><span class="annot"><span class="annottext">createRandomMessage :: User -&gt; User -&gt; IO Message
+</span><a href="Message.html#createRandomMessage"><span class="hs-identifier hs-var hs-var">createRandomMessage</span></a></span></span><span> </span><span id="local-6989586621679091999"><span class="annot"><span class="annottext">User
+</span><a href="#local-6989586621679091999"><span class="hs-identifier hs-var">from</span></a></span></span><span> </span><span id="local-6989586621679092000"><span class="annot"><span class="annottext">User
+</span><a href="#local-6989586621679092000"><span class="hs-identifier hs-var">to</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-42"></span><span>    </span><span id="local-6989586621679092001"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679092001"><span class="hs-identifier hs-var">msgContent</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">IO String
+</span><a href="Message.html#randomMessageContent"><span class="hs-identifier hs-var">randomMessageContent</span></a></span><span>
+</span><span id="line-43"></span><span>    </span><span class="annot"><span class="annottext">Message -&gt; IO Message
+forall a. a -&gt; IO a
+forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(Message -&gt; IO Message) -&gt; Message -&gt; IO Message
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">User -&gt; User -&gt; String -&gt; Message
+</span><a href="Message.html#createMessage"><span class="hs-identifier hs-var">createMessage</span></a></span><span> </span><span class="annot"><span class="annottext">User
+</span><a href="#local-6989586621679091999"><span class="hs-identifier hs-var">from</span></a></span><span> </span><span class="annot"><span class="annottext">User
+</span><a href="#local-6989586621679092000"><span class="hs-identifier hs-var">to</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679092001"><span class="hs-identifier hs-var">msgContent</span></a></span><span>
+</span><span id="line-44"></span><span>
+</span><span id="line-45"></span><span class="hs-comment">-- module Message where</span><span>
+</span><span id="line-46"></span><span>
+</span><span id="line-47"></span><span class="hs-comment">-- import User (User)</span><span>
+</span><span id="line-48"></span><span class="hs-comment">-- import System.Random (randomRIO)</span><span>
+</span><span id="line-49"></span><span>
+</span><span id="line-50"></span><span class="hs-comment">-- -- Define the Message data type</span><span>
+</span><span id="line-51"></span><span class="hs-comment">-- data Message = Message {</span><span>
+</span><span id="line-52"></span><span class="hs-comment">--     sender :: User,</span><span>
+</span><span id="line-53"></span><span class="hs-comment">--     receiver :: User,</span><span>
+</span><span id="line-54"></span><span class="hs-comment">--     content :: String</span><span>
+</span><span id="line-55"></span><span class="hs-comment">-- } deriving (Eq, Show)</span><span>
+</span><span id="line-56"></span><span>
+</span><span id="line-57"></span><span class="hs-comment">-- -- Function to create a new message</span><span>
+</span><span id="line-58"></span><span class="hs-comment">-- createMessage :: User -&gt; User -&gt; String -&gt; Message</span><span>
+</span><span id="line-59"></span><span class="hs-comment">-- createMessage from to msgContent = Message from to msgContent</span><span>
+</span><span id="line-60"></span><span>
+</span><span id="line-61"></span><span class="hs-comment">-- -- Function to generate a random message content</span><span>
+</span><span id="line-62"></span><span class="hs-comment">-- randomMessageContent :: IO String</span><span>
+</span><span id="line-63"></span><span class="hs-comment">-- randomMessageContent = do</span><span>
+</span><span id="line-64"></span><span class="hs-comment">--     -- Generate a random message content</span><span>
+</span><span id="line-65"></span><span class="hs-comment">--     -- This is a placeholder for simplicity; you can replace it with more complex logic</span><span>
+</span><span id="line-66"></span><span class="hs-comment">--     let messages = [&quot;Hello&quot;, &quot;Hi&quot;, &quot;How are you?&quot;, &quot;Good morning&quot;, &quot;Good evening&quot;, &quot;Good night&quot;, &quot;Good afternoon&quot;, &quot;Good day&quot;, &quot;Goodbye&quot;, &quot;Bye&quot;, &quot;See you&quot;, &quot;See you later&quot;, &quot;See you soon&quot;, &quot;Lets go out?&quot;,&quot;Lets go to the movies?&quot;, &quot;Lets go to the park?&quot;, &quot;Lets go to the beach?&quot;, &quot;Lets go to the mall?&quot;, &quot;Lets go to the restaurant?&quot;, &quot;Lets go to the gym?&quot;, &quot;Lets go to the party?&quot;, &quot;Lets go to the club?&quot;, &quot;Lets go to the bar?&quot;, &quot;Lets go to the concert?&quot;, &quot;Lets go to the theater?&quot;, &quot;Lets go to the museum?&quot;, &quot;Lets go to the zoo?&quot;, &quot;Lets go to the aquarium?&quot;, &quot;Lets go to the stadium?&quot;, &quot;Lets go to the game?&quot;, &quot;Lets go to the match?&quot;, &quot;Lets go to the show?&quot;, &quot;Lets go to the festival?&quot;, &quot;Lets go to the carnival?&quot;, &quot;Lets go to the fair?&quot;, &quot;Lets go to the circus?&quot;, &quot;Lets go to the opera?&quot;, &quot;Lets go to the ballet?&quot;,&quot;Thank you&quot;,&quot;How are you?&quot;, &quot;I am fine&quot;, &quot;I am good&quot;, &quot;I am great&quot;, &quot;I am awesome&quot;, &quot;I am amazing&quot;, &quot;I am fantastic&quot;, &quot;I am wonderful&quot;, &quot;I am excellent&quot;, &quot;I am happy&quot;, &quot;I am sad&quot;, &quot;I am tired&quot;, &quot;I am sleepy&quot;, &quot;I am hungry&quot;, &quot;I am thirsty&quot;, &quot;I am bored&quot;, &quot;I am sick&quot;, &quot;I am ill&quot;, &quot;I am injured&quot;, &quot;I am hurt&quot;, &quot;I am busy&quot;, &quot;I am free&quot;, &quot;I am available&quot;, &quot;I am here&quot;, &quot;I am there&quot;, &quot;I am near&quot;, &quot;I am far&quot;, &quot;I am close&quot;, &quot;I am ready&quot;, &quot;I am excited&quot;, &quot;I am nervous&quot;, &quot;I am scared&quot;, &quot;I am afraid&quot;, &quot;I am worried&quot;, &quot;I am anxious&quot;, &quot;I am calm&quot;, &quot;I am relaxed&quot;, &quot;I am comfortable&quot;, &quot;I am cold&quot;, &quot;I am hot&quot;, &quot;I am warm&quot;, &quot;I am cool&quot;, &quot;I am freezing&quot;, &quot;I am freezing cold&quot;]</span><span>
+</span><span id="line-67"></span><span class="hs-comment">--     index &lt;- randomRIO (0, length messages - 1)</span><span>
+</span><span id="line-68"></span><span>    </span><span>
+</span><span id="line-69"></span><span class="hs-comment">--     return $ messages !! index</span><span>
+</span><span id="line-70"></span><span>
+</span><span id="line-71"></span><span class="hs-comment">-- -- Function to create a random message between two users</span><span>
+</span><span id="line-72"></span><span class="hs-comment">-- createRandomMessage :: User -&gt; User -&gt; IO Message</span><span>
+</span><span id="line-73"></span><span class="hs-comment">-- createRandomMessage from to = do</span><span>
+</span><span id="line-74"></span><span class="hs-comment">--     msgContent &lt;- randomMessageContent</span><span>
+</span><span id="line-75"></span><span class="hs-comment">--     return $ createMessage from to msgContent</span><span>
+</span><span id="line-76"></span></pre></body></html>
