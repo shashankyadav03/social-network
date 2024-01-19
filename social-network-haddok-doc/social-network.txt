@@ -3,7 +3,7 @@
 
 
 -- | Please see the README on GitHub at
---   <a>https://github.com/githubuser/social-network#readme</a>
+--   <a>https://github.com/shashankyadav03/social-network#readme</a>
 @package social-network
 @version 0.1.0.0
 

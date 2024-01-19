@@ -67,25 +67,4 @@ forall a. MVar a -&gt; (a -&gt; IO a) -&gt; IO ()
 </span><a href="ConcurrentUtils.html#readSharedVar"><span class="hs-identifier hs-var hs-var">readSharedVar</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">MVar a -&gt; IO a
 forall a. MVar a -&gt; IO a
 </span><span class="hs-identifier hs-var">readMVar</span></span><span>
-</span><span id="line-45"></span><span>
-</span><span id="line-46"></span><span class="hs-comment">-- module ConcurrentUtils where</span><span>
-</span><span id="line-47"></span><span>
-</span><span id="line-48"></span><span class="hs-comment">-- import Control.Concurrent</span><span>
-</span><span id="line-49"></span><span class="hs-comment">-- import System.Random (randomRIO)</span><span>
-</span><span id="line-50"></span><span>
-</span><span id="line-51"></span><span class="hs-comment">-- -- Function to perform an action with a random delay</span><span>
-</span><span id="line-52"></span><span class="hs-comment">-- -- The delay is in seconds, and the range is specified by the arguments</span><span>
-</span><span id="line-53"></span><span class="hs-comment">-- randomDelayAction :: Int -&gt; Int -&gt; IO () -&gt; IO ()</span><span>
-</span><span id="line-54"></span><span class="hs-comment">-- randomDelayAction minSec maxSec action = do</span><span>
-</span><span id="line-55"></span><span class="hs-comment">--     delaySec &lt;- randomRIO (minSec, maxSec)</span><span>
-</span><span id="line-56"></span><span class="hs-comment">--     threadDelay (delaySec * 1000000) -- Convert seconds to microseconds</span><span>
-</span><span id="line-57"></span><span class="hs-comment">--     action</span><span>
-</span><span id="line-58"></span><span>
-</span><span id="line-59"></span><span class="hs-comment">-- -- Function to safely modify a shared variable (MVar)</span><span>
-</span><span id="line-60"></span><span class="hs-comment">-- modifySharedVar :: MVar a -&gt; (a -&gt; IO a) -&gt; IO ()</span><span>
-</span><span id="line-61"></span><span class="hs-comment">-- modifySharedVar var action = modifyMVar_ var action</span><span>
-</span><span id="line-62"></span><span>
-</span><span id="line-63"></span><span class="hs-comment">-- -- Function to read a shared variable (MVar)</span><span>
-</span><span id="line-64"></span><span class="hs-comment">-- readSharedVar :: MVar a -&gt; IO a</span><span>
-</span><span id="line-65"></span><span class="hs-comment">-- readSharedVar = readMVar</span><span>
-</span><span id="line-66"></span></pre></body></html>
+</span><span id="line-45"></span></pre></body></html>

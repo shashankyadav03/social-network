@@ -130,37 +130,4 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 </span><a href="Message.html#createMessage"><span class="hs-identifier hs-var">createMessage</span></a></span><span> </span><span class="annot"><span class="annottext">User
 </span><a href="#local-6989586621679091999"><span class="hs-identifier hs-var">from</span></a></span><span> </span><span class="annot"><span class="annottext">User
 </span><a href="#local-6989586621679092000"><span class="hs-identifier hs-var">to</span></a></span><span> </span><span class="annot"><span class="annottext">String
-</span><a href="#local-6989586621679092001"><span class="hs-identifier hs-var">msgContent</span></a></span><span>
-</span><span id="line-44"></span><span>
-</span><span id="line-45"></span><span class="hs-comment">-- module Message where</span><span>
-</span><span id="line-46"></span><span>
-</span><span id="line-47"></span><span class="hs-comment">-- import User (User)</span><span>
-</span><span id="line-48"></span><span class="hs-comment">-- import System.Random (randomRIO)</span><span>
-</span><span id="line-49"></span><span>
-</span><span id="line-50"></span><span class="hs-comment">-- -- Define the Message data type</span><span>
-</span><span id="line-51"></span><span class="hs-comment">-- data Message = Message {</span><span>
-</span><span id="line-52"></span><span class="hs-comment">--     sender :: User,</span><span>
-</span><span id="line-53"></span><span class="hs-comment">--     receiver :: User,</span><span>
-</span><span id="line-54"></span><span class="hs-comment">--     content :: String</span><span>
-</span><span id="line-55"></span><span class="hs-comment">-- } deriving (Eq, Show)</span><span>
-</span><span id="line-56"></span><span>
-</span><span id="line-57"></span><span class="hs-comment">-- -- Function to create a new message</span><span>
-</span><span id="line-58"></span><span class="hs-comment">-- createMessage :: User -&gt; User -&gt; String -&gt; Message</span><span>
-</span><span id="line-59"></span><span class="hs-comment">-- createMessage from to msgContent = Message from to msgContent</span><span>
-</span><span id="line-60"></span><span>
-</span><span id="line-61"></span><span class="hs-comment">-- -- Function to generate a random message content</span><span>
-</span><span id="line-62"></span><span class="hs-comment">-- randomMessageContent :: IO String</span><span>
-</span><span id="line-63"></span><span class="hs-comment">-- randomMessageContent = do</span><span>
-</span><span id="line-64"></span><span class="hs-comment">--     -- Generate a random message content</span><span>
-</span><span id="line-65"></span><span class="hs-comment">--     -- This is a placeholder for simplicity; you can replace it with more complex logic</span><span>
-</span><span id="line-66"></span><span class="hs-comment">--     let messages = [&quot;Hello&quot;, &quot;Hi&quot;, &quot;How are you?&quot;, &quot;Good morning&quot;, &quot;Good evening&quot;, &quot;Good night&quot;, &quot;Good afternoon&quot;, &quot;Good day&quot;, &quot;Goodbye&quot;, &quot;Bye&quot;, &quot;See you&quot;, &quot;See you later&quot;, &quot;See you soon&quot;, &quot;Lets go out?&quot;,&quot;Lets go to the movies?&quot;, &quot;Lets go to the park?&quot;, &quot;Lets go to the beach?&quot;, &quot;Lets go to the mall?&quot;, &quot;Lets go to the restaurant?&quot;, &quot;Lets go to the gym?&quot;, &quot;Lets go to the party?&quot;, &quot;Lets go to the club?&quot;, &quot;Lets go to the bar?&quot;, &quot;Lets go to the concert?&quot;, &quot;Lets go to the theater?&quot;, &quot;Lets go to the museum?&quot;, &quot;Lets go to the zoo?&quot;, &quot;Lets go to the aquarium?&quot;, &quot;Lets go to the stadium?&quot;, &quot;Lets go to the game?&quot;, &quot;Lets go to the match?&quot;, &quot;Lets go to the show?&quot;, &quot;Lets go to the festival?&quot;, &quot;Lets go to the carnival?&quot;, &quot;Lets go to the fair?&quot;, &quot;Lets go to the circus?&quot;, &quot;Lets go to the opera?&quot;, &quot;Lets go to the ballet?&quot;,&quot;Thank you&quot;,&quot;How are you?&quot;, &quot;I am fine&quot;, &quot;I am good&quot;, &quot;I am great&quot;, &quot;I am awesome&quot;, &quot;I am amazing&quot;, &quot;I am fantastic&quot;, &quot;I am wonderful&quot;, &quot;I am excellent&quot;, &quot;I am happy&quot;, &quot;I am sad&quot;, &quot;I am tired&quot;, &quot;I am sleepy&quot;, &quot;I am hungry&quot;, &quot;I am thirsty&quot;, &quot;I am bored&quot;, &quot;I am sick&quot;, &quot;I am ill&quot;, &quot;I am injured&quot;, &quot;I am hurt&quot;, &quot;I am busy&quot;, &quot;I am free&quot;, &quot;I am available&quot;, &quot;I am here&quot;, &quot;I am there&quot;, &quot;I am near&quot;, &quot;I am far&quot;, &quot;I am close&quot;, &quot;I am ready&quot;, &quot;I am excited&quot;, &quot;I am nervous&quot;, &quot;I am scared&quot;, &quot;I am afraid&quot;, &quot;I am worried&quot;, &quot;I am anxious&quot;, &quot;I am calm&quot;, &quot;I am relaxed&quot;, &quot;I am comfortable&quot;, &quot;I am cold&quot;, &quot;I am hot&quot;, &quot;I am warm&quot;, &quot;I am cool&quot;, &quot;I am freezing&quot;, &quot;I am freezing cold&quot;]</span><span>
-</span><span id="line-67"></span><span class="hs-comment">--     index &lt;- randomRIO (0, length messages - 1)</span><span>
-</span><span id="line-68"></span><span>    </span><span>
-</span><span id="line-69"></span><span class="hs-comment">--     return $ messages !! index</span><span>
-</span><span id="line-70"></span><span>
-</span><span id="line-71"></span><span class="hs-comment">-- -- Function to create a random message between two users</span><span>
-</span><span id="line-72"></span><span class="hs-comment">-- createRandomMessage :: User -&gt; User -&gt; IO Message</span><span>
-</span><span id="line-73"></span><span class="hs-comment">-- createRandomMessage from to = do</span><span>
-</span><span id="line-74"></span><span class="hs-comment">--     msgContent &lt;- randomMessageContent</span><span>
-</span><span id="line-75"></span><span class="hs-comment">--     return $ createMessage from to msgContent</span><span>
-</span><span id="line-76"></span></pre></body></html>
+</span><a href="#local-6989586621679092001"><span class="hs-identifier hs-var">msgContent</span></a></span></pre></body></html>
